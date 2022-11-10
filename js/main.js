@@ -3,7 +3,7 @@
 
 $(function(){
 
-   /*=================================================
+  /*=================================================
   スムーススクロール
   ===================================================*/
     // hrefの値が"#"で始まるaタグをクリックした時に動作する
@@ -21,27 +21,27 @@ $(function(){
     return false;
   });
 
+  
   /*===============================================
   スクロールするとボタンが現れる
   トップへ戻るとボタンが隠れる
   ===============================================*/
+  let windowTarget = $(window);
   var pageTop = $('#page_top');
   // ウィンドウをスクロールしたとき
-  $(Window).scroll(function () {
+  windowTarget.scroll(function () {
     // トップから200以上スクロールしたら
-    if ($(this).scrollTop() > 200){
+    if (windowTarget.scrollTop() > 200){
       // #page_topにappearクラス付与。
       pageTop.removeClass('hide');
       pageTop.addClass('appear');
       // トップから200以上スクロールしていない時、
-    } else {
+    } else if (pageTop.hasClass('appear')) {
       // かつ、もし既にappearクラスが付与されていたら
-      if (pageTop.hasClass('appear')) {
         // #page_topのappearクラス消去。
         pageTop.removeClass('appear');
         // #page_topにhideクラス付与。
         pageTop.addClass('hide');
-      }
     }
   }); 
 
