@@ -27,7 +27,8 @@ $(function(){
   トップへ戻るとボタンが隠れる
   ===============================================*/
   let windowTarget = $(window);
-  var pageTop = $('#page_top');
+  let pageTop = $('#page_top');
+
   // ウィンドウをスクロールしたとき
   windowTarget.scroll(function () {
     // トップから200以上スクロールしたら
@@ -57,6 +58,29 @@ $(function(){
     //親要素イベント伝播の無効化。
     return false; 
   });
+
+  /*===============================================
+  ラジオボタンを2度クリックで選択解除
+  ===============================================*/
+  let input = $('input[name=work]');
+  // 変数nowcheckedに、チェック済みのラジオボタンの値を代入
+  let nowchecked = $('input[name=work]').filter(':checked').val();
+
+  input.click(function(){
+    //2回目にクリックした時
+    // inputの値と、チェック済みインプットの値が一致すれば
+    if(input.val() == nowchecked) {
+      //inputのチェックを外し
+      input.prop('checked', false);
+      //チェック済みだったラジオボタンのチェックを外す
+      nowchecked = false;
+    } else {
+      //1回目にクリックした時
+      //チェック済みラジオボタンとinputの値を同じにする。
+      nowchecked = input.val();
+    }
+  });
+
 });
 
 

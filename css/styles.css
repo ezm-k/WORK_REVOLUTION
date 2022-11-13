@@ -92,7 +92,7 @@ li {
 }
 
 /*-------------------------------------------
-ヘッダー
+Header
 -------------------------------------------*/
 #header {
   display: flex;
@@ -138,14 +138,28 @@ li {
 }
 
 /*-------------------------------------------
-メインビジュアル
+Mainvisual
 -------------------------------------------*/
 #mainvisual {
   position: relative;
   width: 100%;
   height: 700px;
-  background: linear-gradient(to bottom right,#0e002e 0%, #1e092b 23.1%, #320c65 49.12%, #a01b7c 79.8%, #c21780 100%);
   overflow: hidden;
+  background: linear-gradient(to bottom right,#0e002e 0%, #1e092b 23.1%, #320c65 49.12%, #a01b7c 79.8%, #c21780 100%);
+  background-size: 300% 300%;
+  animation: gradation 10s ease-in-out infinite;
+}
+
+@keyframes gradation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 #mainvisual .shawn_img {
@@ -154,6 +168,12 @@ li {
   right: 5%;
   width: 560px;
   height: 736px;
+}
+
+#mainvisual .shawn_img img{
+  width: 100%;
+  height: 100%;
+  vertical-align: bottom;
 }
 
 #mainvisual .sign {
@@ -169,6 +189,7 @@ li {
   top: 145px;
   left: 130px;
   font-family: 'Montserrat'; 
+  word-break: break-all;
 }
 
 #mainvisual .text .project {
@@ -207,7 +228,6 @@ li {
 
 #mainvisual .btn .btn_text{
   font-size: 1.125rem;
-  font-weight: bold;
   /* ボタンが浮き出てる
   高さ分、ボックスの高さから引く。 */
   line-height: 65px;
@@ -298,15 +318,9 @@ About
   transform: scale(1.1);
 }
 
-/* 
-Hiragino Sansはテキストが2pxほど上に移動するため、
-line-heightで微調整 
-*/
 #about .inner .right .btn .btn_text {
-  font-family: 'Hiragino Sans';
   font-size: 1.125rem;
-  font-weight: normal;
-  line-height: 58px;
+  line-height: 54px;
 }
 
 /*-------------------------------------------
@@ -320,6 +334,7 @@ Speaker
   margin-bottom: 60px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 #speaker .inner .item:last-child {
@@ -327,11 +342,12 @@ Speaker
 }
 
 #speaker .inner .item .image {
-  width: 40% 
+  width: 40%;
 }
 
 #speaker .inner .item .image img {
-  width: 100%;
+  width: 100%; 
+  border-radius: 50%;
   vertical-align: bottom;
 }
 
@@ -421,6 +437,7 @@ Registor
 */
 #registor .inner .form_item {
   margin-bottom: 30px;
+  user-select: none;
 }
 
 #registor .inner .form_item .title {
@@ -524,7 +541,7 @@ line-heightで上下位置を微調整
 }
 
 /*-------------------------------------------
-フッター
+Footer
 -------------------------------------------*/
 #footer {
   padding: 70px;
@@ -630,474 +647,682 @@ line-heightで上下位置を微調整
   z-index: 3;
 }
 
-
-/*-------------------------------------------
-tablet
--------------------------------------------*/
-@media (min-width:376px) and (max-width:1023px) {
     /*-------------------------------------------
-    Common
+    PC
     -------------------------------------------*/
-    .section_title {
-      font-size: 2.75rem;
-      margin-bottom: 40px;
-    }
-    
-    .section_title .ja {
-      display: block;
-      color: #fff;
-      font-family: 'Montserrat';
-      font-size: 1.25rem;
-    }
-    
-    .wrapper {
-      width: 100%;
-      max-width: 1366px;
-      margin: 0 auto;
-      padding: 50px 60px;
-    }
+    @media (max-width:1280px) {
 
-    /*-------------------------------------------
-    Registor
-    -------------------------------------------*/
-    #registor {
-      padding: 50px 60px;
-      overflow: hidden;
-    }
-
-    #registor .inner .form_item .input_short {
-      width: 100%;
-    }
-
-    #registor .inner .comment .input_long {
-      width: 100%;
-      height: 300px;
-    }
-
-    #registor .inner .sauce .select_box {
-      width: 100%;
-    }
-
-  }
-  
-  /*-------------------------------------------
-  SP
-  -------------------------------------------*/
-  @media (max-width: 376px) {
       /*-------------------------------------------
       Common
       -------------------------------------------*/
-      .btn {
-        border-bottom: 6px solid #DD118E;
+      html {
+        font-size: 80%;
       }
 
-      .btn_text {
-        font-family: 'Noto Sans JP';
-      }
-      
-      .section_title {
-        font-size: 2rem;
-        margin-bottom: 30px;
-      }
-
-      .section_title .ja {
-        font-size: 0.875rem;
+      body {
+        font-size: 1.28em;
       }
 
       .wrapper {
-        width: 100%;
-        margin: 0 auto;
-        padding: 0 16px;
+        padding: 110px 90px;
       }
-
       /*-------------------------------------------
-      ヘッダー
+      Mainvisual
       -------------------------------------------*/
-      #header {
-        align-items: flex-start;
-        padding: 16px 8px 0 16px;
-      }
-
-      #header .nav_menu {
-        flex-direction: column;
-        align-items:  flex-start ;
-      }
-
-      #header .nav_menu li {
-        margin-left: 0;
-        margin-bottom: 16px;
-      }
-
-      #header .nav_menu li a {
-        font-size: 0.875rem;
-      }
-
-      /* 
-      speaker , about , sessionの順番に入れ替え 
-      */
-      #header .nav_menu li:nth-of-type(1) {
-        order: 1;
-      }
-
-      #header .nav_menu li:nth-of-type(3) {
-        order: 2;
-      }
-
-      #header .nav_menu li:last-child {
-        margin-bottom: 0;
-      }
-      
-      /*-------------------------------------------
-      メインビジュアル
-      -------------------------------------------*/
-      #mainvisual {
-        height: 100vh;
-        background: linear-gradient(145deg ,#0e002e 0%, #1e092b 23.1%, #320c65 49.12%, #a01b7c 79.8%, #c21780 100%);
-      }
-
       #mainvisual .shawn_img {
         top: auto;
-        right: -72px;
+        right: -5%;
         bottom: 0;
-        width: 317px;
-        height: 417px;
+        width: 510px;
+        height: auto;
       }
 
       #mainvisual .sign {
-        top: 40%;
-        right: 7.9%;
-        width: 170px;
+        top: 500px;
+        right: 35%;
+        width: 286px;
       }
 
       #mainvisual .text {
-        top: 18.7%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      #mainvisual .text .project {
-        margin-bottom: 0;
-        font-size: 1.125rem;
-        line-height: 1.6;
-      }
-
-      #mainvisual .text .title {
-        margin-bottom: 8px;
-        font-size: 2.8125rem;
-      }
-
-      #mainvisual .text .date {
-        font-size: 1.25rem;
+        left: 10%;
       }
 
       #mainvisual .btn {
-        top: 52%;
-        left: 3%;
-        width: 191px;
-        height: 46px;
-      }
-
-      #mainvisual .btn .btn_text{
-        font-size: 0.75rem;
-        /* ボタンが浮き出てる
-        高さ分、ボックスの高さから引く。 */
-        line-height: 40px;
-      }
-
-      #mainvisual .about_him {
-        right: 6.4%;
-        bottom: 10px;
-      }
-
-      #mainvisual .about_him .his_name {
-        font-size: 0.875rem;
-        letter-spacing: -0.06em;
-      }
-
-      #mainvisual .about_him .his_name .small {
-        font-size: 0.75rem;
-      }
-
-      #mainvisual .about_him .his_job {
-        font-size: 0.75rem;
-        letter-spacing: 0.05em;
+        top: 445px;
+        left: 10%;
       }
 
       /*-------------------------------------------
-      イベントについて
+      About
       -------------------------------------------*/
-      #about {
-        padding: 90px 0 70px;
-        overflow: hidden;
+      #about .inner .left {
+        width: 50%;
       }
 
-      #about .inner{
-        flex-direction: column;
-      }
-
-      /* width:100vw , margin: 0 calc(50% - 50vw)でwrapperのpaddingを無視して画面幅いっぱいに広げる */
       #about .inner .left .image  {
-        width: 100vw;
-        margin: 0 calc(50% - 50vw);
-        height: 230px;    
-      }
-      
-      #about .inner .left .image img {
         width: 100%;
         height: 100%;
       }
-      
+
       #about .inner .right {
-        margin-left: 0;
+        width: 50%;
         padding: 0;
-        padding-top: 30px;
-      }
-      
-      #about .inner .right .thema {
-        margin-bottom: 6px;
-        font-size: 1rem;
-      }
-      
-      #about .inner .right .topic {
-        margin-bottom: 18px;
-        font-size: 1.75rem;
-      }
-      
-      #about .inner .right .description {
-        margin-bottom: 24px;
-        font-size: 0.875rem;
-        line-height: 2.4;
-      }
-      
-      /*
-      文章中の改行を無効化 
-      */
-      #about .inner .right .description br {
-        display: none;
       }
 
-      #about .inner .right .info {
-        margin-bottom: 30px;
-        font-size: 0.75rem;
-      }
-      
-      #about .inner .right .info dt,
-      #about .inner .right .info dd {
-        margin-bottom: 12px;
-      }
-
-      #about .inner .right .info dt {
-        width: 15%;
-      }
-      
-      #about .inner .right .info dd {
-        width: 85%;
-      }
-      
-      #about .inner .right .btn {
-        width: 191px;
-        height: 53px;
-        margin: 0 auto;
-      }
-      
-      #about .inner .right .btn .btn_text {
-        font-size: 0.75rem;
-        font-weight: bold;
-        line-height: 53px;
-      }
 
       /*-------------------------------------------
       Speaker
       -------------------------------------------*/
-      #speaker {
-        padding: 70px 0 70px;
-        background: linear-gradient(145deg, #0e002e 0%, #0f002e 0%, #1e092b 23.1%, #320c65 49.12%, #a01b7c 79.8%, #c21780 100%);
-      }
-
       #speaker .inner .item {
-        flex-direction: column;
-        margin-bottom: 54px;
-      }
-
-      #speaker .inner .item:last-child {
-        margin-bottom: 0;
-      }
-
-      #speaker .inner .item .image {
-        width: 100%;
-        margin-bottom: 16px;
+        align-items: center;
       }
 
       #speaker .inner .item .text {
-        width: 100%
-      }
-
-      #speaker .inner .item .text .detail {
-        font-size: 0.875rem;
-        line-height: 2;
-      }
-
-      #speaker .inner .text .name {
-        margin-bottom: 24px; 
-        font-size: 1.85rem;
-        line-height: 1.5;
-      }
-
-      #speaker .inner .text .name .ja {
-        font-size: 1rem;
-      }
-
-      #speaker .inner .right_image {
-        flex-direction: column;
-      }
-
-      #speaker .inner .right_image .text {
-        margin-right: 0;
-      }
-
-      #speaker .inner .left_image .text {
-        margin-left: 0;
-      }
-
-      /*-------------------------------------------
-      Session
-      -------------------------------------------*/
-      #session {
-        padding: 90px 0 30px;
-      }
-
-      #session .time_schedule {
-        flex-direction: column;
-      }
-
-      #session .time_schedule .time {
-        width: 100%;
-        margin-bottom: 8px;
-        padding: 0;
-        border-bottom: none;
-        font-size: 0.75rem;
-      }
-
-      #session .time_schedule .overview {
-        width: 100%;
-        margin-bottom: 40px;
-        padding: 0;
-        padding-bottom: 16px;
-      }
-
-      #session .time_schedule .overview:last-child {
-        margin-bottom: 0;
-      }
-
-      #session .time_schedule .overview .title {
-        margin-bottom: 12px;
-        font-size: 1rem;
-      }
-
-      #session .time_schedule .overview .name,
-      #session .time_schedule .overview .catchphrase {
-        font-size: 0.75rem;
-        line-height: 2;
+        width: 60%;
+        font-size: 85%;
       }
 
       /*-------------------------------------------
       Registor
       -------------------------------------------*/
       #registor {
-          padding: 60px 16px;
-          overflow: hidden;
-      }
-
-      #registor .inner {
-          padding: 52px 30px;
+        padding: 110px 90px;
+        overflow: hidden;
       }
 
       #registor .inner .form_item .input_short {
-          width: 100%;
-      }
-
-      #registor .inner .form_item .title .required {
-        vertical-align: baseline;
-      }
-
-      #registor .inner .job .select .item {
-        display: block;
-        margin-right: 0;
-        margin-bottom: 8px;
+        width: 80%;
       }
 
       #registor .inner .comment .input_long {
-        width: 100%;
-        height: 150px;
+        width: 80%;
       }
       
       #registor .inner .sauce {
         margin-bottom: 54px;
       }
 
-      /* 
-      「WDCをどちらでお知りになりましたか？」のタイトルと*必須を横並びにする
-      */
-      #registor .inner .sauce .title {
-        display: flex;
-      }
-      /* タイトルに幅設定 */
-      #registor .inner .sauce .title .sp {
-        width: 80%;
-      }
-      /* *必須に幅設定 */
-      #registor .inner .sauce .title .required {
-        width: 20%;
-      }
-
       #registor .inner .sauce .select_box {
-        width: 100%;
+        width: 50%;
       }
-
-      #registor .inner .btn {
-        width: 191px;
-        height: 46px;
-        margin: 0 auto;
-      }
-
-      #registor .inner .btn .btn_text {
-        font-size: 0.75rem;
-      }
-
-      /* *-------------------------------------------
-      フッター
-      -------------------------------------------*/ 
-      #footer {
-        padding: 50px 0;
-      }
-
-      #footer .text {
-        font-size: 0.75rem;
-      }
-
+    }
+  
       /*-------------------------------------------
-      ページトップに戻るボタン
+      Tablet
       -------------------------------------------*/
-      #page_top {
-        right: 5px;
-        bottom: 32px;
-        width: 52px;
-        height: 52px;
+      @media (max-width: 920px) {
+
+        /*-------------------------------------------
+        Common
+        -------------------------------------------*/
+        html {
+          font-size: 100%;
+        }
+
+        body {
+          font-size: 1rem
+        }
+        
+        .wrapper {
+          padding: 90px 50px 70px;
+        }
+
+        /*-------------------------------------------
+        Header
+        -------------------------------------------*/
+        #header {
+          align-items: flex-start;
+          padding: 4.2% 2.1% 0 4.2%;
+        }
+
+        #header .nav_menu {
+          flex-direction: column;
+          align-items:  flex-start ;
+        }
+
+        #header .nav_menu li {
+          margin-left: 0;
+          margin-bottom: 1.8vh;
+        }
+
+        /* 
+        speaker , about , sessionの順番に入れ替え 
+        */
+        #header .nav_menu li:nth-of-type(1) {
+          order: 1;
+        }
+
+        #header .nav_menu li:nth-of-type(3) {
+          order: 2;
+        }
+
+        #header .nav_menu li:last-child {
+          margin-bottom: 0;
+        }
+
+        /*-------------------------------------------
+        Mainvisual
+        -------------------------------------------*/
+        #mainvisual {
+          height: 100vh;
+        }
+
+        #mainvisual .shawn_img {
+          right: -5%;
+          bottom: 0;
+          width: 60.5%;
+          height: auto;
+        }
+
+        #mainvisual .sign {
+          top: 80%;
+          right: 45%;
+        }
+
+        #mainvisual .text {
+          top: 18.7%;
+          left: 10%;
+        }
+
+        #mainvisual .text .project {
+          margin-bottom: 0;
+          line-height: 1.6;
+          font-size: 1.35rem
+        }
+
+        #mainvisual .text .title {
+          margin-bottom: 8px;
+          font-size: 5.5rem;
+        }
+
+        #mainvisual .text .date {
+          font-size: 2rem;
+        }
+
+        #mainvisual .btn {
+          top: 60%;
+          left: 10%;
+        }
       }
-      
-      /* 矢印左側の長方形 */
-      #page_top .page_top_arrow::before {
-        top: 38.4%;
-        left: 40.4%;
-        width: 3px;
-        height: 12px;
+
+          /*-------------------------------------------
+          SP
+          -------------------------------------------*/
+          @media (max-width: 376px) {
+
+          /*-------------------------------------------
+          Common
+          -------------------------------------------*/
+          html {
+            font-size: 100%;
+          }
+
+          body {
+            font-size: 1rem;
+          }
+
+          .btn {
+            border-bottom: 6px solid #DD118E;
+          }
+
+          .btn_text {
+            font-family: 'Noto Sans JP';
+          }
+          
+          .section_title {
+            font-size: 2rem;
+            margin-bottom: 8.7%;
+          }
+
+          .section_title .ja {
+            font-size: 0.875rem;
+          }
+
+          .wrapper {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 4.2%;
+          }
+
+          /*-------------------------------------------
+          Header
+          -------------------------------------------*/
+          #header {
+            align-items: flex-start;
+            padding: 4.2% 2.1% 0 4.2%;
+          }
+
+          #header .site_title {
+            width: 21vw;
+          }
+
+          #header .nav_menu {
+            flex-direction: column;
+            align-items:  flex-start ;
+          }
+
+          #header .nav_menu li {
+            margin-left: 0;
+            margin-bottom: 1.8vh;
+          }
+
+          #header .nav_menu li a {
+            font-size: 0.875rem;
+          }
+
+          /* 
+          speaker , about , sessionの順番に入れ替え 
+          */
+          #header .nav_menu li:nth-of-type(1) {
+            order: 1;
+          }
+
+          #header .nav_menu li:nth-of-type(3) {
+            order: 2;
+          }
+
+          #header .nav_menu li:last-child {
+            margin-bottom: 0;
+          }
+          
+          /*-------------------------------------------
+          Mainvisual
+          -------------------------------------------*/
+          #mainvisual .shawn_img {
+            top: auto;
+            right: -19.2%;
+            bottom: 0;
+            width: 84.5%;
+            height: auto;
+          }
+
+          #mainvisual .sign {
+            top: 40%;
+            right: 7.9%;
+            width: 45.3%;
+          }
+
+          #mainvisual .text {
+            top: 18.7%;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+
+          #mainvisual .text .project {
+            margin-bottom: 0;
+            font-size: 1.125rem;
+            line-height: 1.6;
+          }
+
+          #mainvisual .text .title {
+            margin-bottom: 8px;
+            font-size: 2.5rem;
+          }
+
+          #mainvisual .text .date {
+            font-size: 1.25rem;
+          }
+
+          #mainvisual .btn {
+            top: 52%;
+            width: 51%;
+            height: 5.7%;
+          }
+
+          #mainvisual .btn .btn_text{
+            font-size: 0.75rem;
+            /* ボタンが浮き出てる
+            高さ分、ボックスの高さから引く。 */
+            line-height: 4.93vh;
+          }
+
+          #mainvisual .about_him {
+            right: 6.4%;
+            bottom: 1.2%;
+          }
+
+          #mainvisual .about_him .his_name {
+            font-size: 0.875rem;
+            letter-spacing: -0.06em;
+          }
+
+          #mainvisual .about_him .his_name .small {
+            font-size: 0.75rem;
+          }
+
+          #mainvisual .about_him .his_job {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+          }
+
+          /*-------------------------------------------
+          About
+          -------------------------------------------*/
+          #about {
+            padding: 90px 0 70px;
+            overflow: hidden;
+          }
+
+          #about .inner{
+            flex-direction: column;
+          }
+
+          #about .inner .left {
+            width: 100%;
+          }
+
+          /* width:100vw , margin: 0 calc(50% - 50vw)でwrapperのpaddingを無視して画面幅いっぱいに広げる */
+          #about .inner .left .image  {
+            width: 100vw;
+            margin: 0 calc(50% - 50vw);
+            height: 28.3vh;    
+          }
+          
+          #about .inner .left .image img {
+            width: 100%;
+            height: 100%;
+          }
+          
+          #about .inner .right {
+            width: 100%;
+            margin-left: 0;
+            padding: 0;
+            padding-top: 30px;
+          }
+          
+          #about .inner .right .thema {
+            margin-bottom: 6px;
+            font-size: 1rem;
+          }
+          
+          #about .inner .right .topic {
+            margin-bottom: 18px;
+            font-size: 1.75rem;
+          }
+          
+          #about .inner .right .description {
+            margin-bottom: 24px;
+            font-size: 0.875rem;
+            line-height: 2.4;
+          }
+          
+          /*
+          文章中の改行を無効化 
+          */
+          #about .inner .right .description br {
+            display: none;
+          }
+
+          #about .inner .right .info {
+            margin-bottom: 30px;
+            font-size: 0.75rem;
+          }
+          
+          #about .inner .right .info dt,
+          #about .inner .right .info dd {
+            margin-bottom: 12px;
+          }
+
+          #about .inner .right .info dt {
+            width: 15%;
+          }
+          
+          #about .inner .right .info dd {
+            width: 85%;
+          }
+          
+          #about .inner .right .btn {
+            width: 51%;
+            height: 6.5%;
+            margin: 0 auto;
+          }
+          
+          #about .inner .right .btn .btn_text {
+            font-size: 0.75rem;
+            font-weight: bold;
+            line-height: 6.5vh;
+          }
+
+          /*-------------------------------------------
+          Speaker
+          -------------------------------------------*/
+          #speaker {
+            padding: 70px 0 70px;
+            background: linear-gradient(145deg, #0e002e 0%, #0f002e 0%, #1e092b 23.1%, #320c65 49.12%, #a01b7c 79.8%, #c21780 100%);
+          }
+
+          #speaker .inner .item {
+            flex-direction: column;
+            margin-bottom: 54px;
+          }
+
+          #speaker .inner .item:last-child {
+            margin-bottom: 0;
+          }
+
+          #speaker .inner .item .image {
+            width: 100%;
+            margin-bottom: 16px;
+          }
+
+          #speaker .inner .item .text {
+            width: 100%
+          }
+
+          #speaker .inner .item .text .detail {
+            font-size: 0.875rem;
+            line-height: 2;
+          }
+
+          #speaker .inner .text .name {
+            margin-bottom: 24px; 
+            font-size: 1.85rem;
+          }
+
+          #speaker .inner .text .name .ja {
+            font-size: 0.875rem;
+          }
+
+          #speaker .inner .right_image {
+            flex-direction: column;
+          }
+
+          #speaker .inner .right_image .text {
+            margin-right: 0;
+          }
+
+          #speaker .inner .left_image .text {
+            margin-left: 0;
+          }
+
+          /*-------------------------------------------
+          Session
+          -------------------------------------------*/
+          #session {
+            padding: 90px 0 30px;
+          }
+
+          #session .time_schedule {
+            flex-direction: column;
+          }
+
+          #session .time_schedule .time {
+            width: 100%;
+            margin-bottom: 8px;
+            padding: 0;
+            border-bottom: none;
+            font-size: 0.75rem;
+          }
+
+          #session .time_schedule .overview {
+            width: 100%;
+            margin-bottom: 40px;
+            padding: 0;
+            padding-bottom: 16px;
+          }
+
+          #session .time_schedule .overview:last-child {
+            margin-bottom: 0;
+          }
+
+          #session .time_schedule .overview .title {
+            margin-bottom: 12px;
+            font-size: 1rem;
+          }
+
+          #session .time_schedule .overview .name,
+          #session .time_schedule .overview .catchphrase {
+            font-size: 0.75rem;
+            line-height: 2;
+          }
+
+          /*-------------------------------------------
+          Registor
+          -------------------------------------------*/
+          #registor {
+            padding: 60px 16px;
+            overflow: hidden;
+            font-size: 80%;
+          }
+
+          #registor .inner {
+            padding: 52px 30px;
+          }
+
+          #registor .inner .form_item .input_short {
+            width: 100%;
+          }
+
+          #registor .inner .form_item .title .required {
+            vertical-align: baseline;
+          }
+
+          #registor .inner .job .select .item {
+            display: block;
+            margin-right: 0;
+            margin-bottom: 8px;
+          }
+
+          #registor .inner .comment .input_long {
+            width: 100%;
+            height: 150px;
+          }
+          
+          #registor .inner .sauce {
+            margin-bottom: 54px;
+          }
+
+          /* 
+          「WDCをどちらでお知りになりましたか？」のタイトルと*必須を横並びにする
+          */
+          #registor .inner .sauce .title {
+            display: flex;
+          }
+          /* タイトルに幅設定 */
+          #registor .inner .sauce .title .sp {
+            width: 80%;
+          }
+          /* *必須に幅設定 */
+          #registor .inner .sauce .title .required {
+            width: 20%;
+          }
+
+          #registor .inner .sauce .select_box {
+            width: 100%;
+          }
+
+          #registor .inner .btn {
+            width: 51vw;
+            height: 5.7vh;
+            margin: 0 auto;
+          }
+
+          #registor .inner .btn .btn_text {
+            font-size: 0.75rem;
+          }
+
+          /*-------------------------------------------
+          Footer
+          -------------------------------------------*/ 
+          #footer {
+            padding: 50px 0;
+          }
+
+          #footer .text {
+            font-size: 0.75rem;
+          }
+
+          /*-------------------------------------------
+          ページトップに戻るボタン
+          -------------------------------------------*/
+          #page_top {
+            right: 5px;
+            bottom: 32px;
+            width: 52px;
+            height: 52px;
+          }
+          
+          /* 矢印左側の長方形 */
+          #page_top .page_top_arrow::before {
+            top: 38.4%;
+            left: 40.4%;
+            width: 3px;
+            height: 12px;
+          }
+          
+          /* 矢印右側の長方形 */
+          #page_top .page_top_arrow::after {
+            top: 38.4%;
+            right: 40.4%;
+            width: 3px;
+            height: 12px;
+          }
       }
-      
-      /* 矢印右側の長方形 */
-      #page_top .page_top_arrow::after {
-        top: 38.4%;
-        right: 40.4%;
-        width: 3px;
-        height: 12px;
-      }
+
+/*-------------------------------------------
+hover指定が可能なデバイスに対してのCSS
+-------------------------------------------*/
+@media (hover: hover) {
+  #header .nav_menu li a:hover {
+    opacity: .7;
   }
+
+  #mainvisual .btn:hover {
+    opacity: .7;
+    transform: scale(1.1);
+  }
+  
+  #about .inner .right .btn:hover {
+    opacity: .7;
+    transform: scale(1.1);
+  }
+
+  #registor .inner .btn:hover {
+    opacity: .7;
+    transform: scale(1.1);
+  }
+}
+
+/*-------------------------------------------
+hoverが使えないデバイスに対してのCSS
+-------------------------------------------*/
+@media (hover: none) {
+  #header .nav_menu li a:active {
+    opacity: .7;
+  }
+
+  #mainvisual .btn:active {
+    opacity: .7;
+    transform: scale(1.1);
+  }
+  
+  #about .inner .right .btn:active {
+    opacity: .7;
+    transform: scale(1.1);
+  }
+
+  #registor .inner .btn:active {
+    opacity: .7;
+    transform: scale(1.1);
+  }
+}
