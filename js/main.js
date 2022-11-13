@@ -81,6 +81,21 @@ $(function(){
     }
   });
 
+  let inputs = $('input[name=work]');
+  let checkAfter = null;
+
+  inputs.each(function(){
+    $(this).click(() => {
+      let nowCheck = $(this).val();
+
+      if(nowCheck === checkAfter){
+        $(this).prop('checked', false);
+        nowCheck = false;
+      }
+
+      checkAfter = nowCheck;
+    });
+  })
 });
 
 
